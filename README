@@ -1,0 +1,11 @@
+    If you haven't, please create a new project named TaskWarrior. Then go to the solution 
+explorer on the right side of Visual Studio. Right-click the project name and select Add.
+Then go to the github repository and add all the files. 
+
+    Do this every time you pull new code. But be sure to push your code before you do this 
+because it will overwrite all the files in the Visual Studio project. When you do actually 
+add the files, it'll ask you if you would like to replac the files. YES!  Then it may ask 
+if you would like to reload those files.  YES!  Then you should be good to go.  Add 
+whatever you like, just make sure to commit your code, then pull, then commit, then push 
+if you ever want to make any additions.  Feel free to edit this README if you find any of 
+this information to be inaccurate.
