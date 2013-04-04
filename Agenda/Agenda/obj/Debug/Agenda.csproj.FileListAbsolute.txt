@@ -1,9 +1,0 @@
-c:\users\sean\documents\visual studio 2012\Projects\Agenda\Agenda\bin\Debug\Agenda.exe.config
-c:\users\sean\documents\visual studio 2012\Projects\Agenda\Agenda\bin\Debug\Agenda.exe
-c:\users\sean\documents\visual studio 2012\Projects\Agenda\Agenda\bin\Debug\Agenda.pdb
-c:\users\sean\documents\visual studio 2012\Projects\Agenda\Agenda\obj\Debug\Agenda.csprojResolveAssemblyReference.cache
-c:\users\sean\documents\visual studio 2012\Projects\Agenda\Agenda\obj\Debug\Agenda.TaskWarrior.resources
-c:\users\sean\documents\visual studio 2012\Projects\Agenda\Agenda\obj\Debug\Agenda.Properties.Resources.resources
-c:\users\sean\documents\visual studio 2012\Projects\Agenda\Agenda\obj\Debug\Agenda.csproj.GenerateResource.Cache
-c:\users\sean\documents\visual studio 2012\Projects\Agenda\Agenda\obj\Debug\Agenda.exe
-c:\users\sean\documents\visual studio 2012\Projects\Agenda\Agenda\obj\Debug\Agenda.pdb

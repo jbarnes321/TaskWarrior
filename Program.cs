@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Agenda
+namespace TaskWarrior
 {
     static class Program
     {
@@ -16,7 +15,7 @@ namespace Agenda
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TaskWarrior());
+            Application.Run(new Tasks());
         }
     }
 }
