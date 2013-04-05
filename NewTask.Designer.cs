@@ -58,6 +58,7 @@
             // TaskName
             // 
             this.TaskName.Location = new System.Drawing.Point(12, 43);
+            this.TaskName.MaxLength = 20;
             this.TaskName.Name = "TaskName";
             this.TaskName.Size = new System.Drawing.Size(100, 20);
             this.TaskName.TabIndex = 1;
@@ -76,7 +77,7 @@
             this.taskTime.Location = new System.Drawing.Point(12, 82);
             this.taskTime.Name = "taskTime";
             this.taskTime.Size = new System.Drawing.Size(200, 20);
-            this.taskTime.TabIndex = 3;
+            this.taskTime.TabIndex = 2;
             // 
             // hourLabel
             // 
@@ -99,14 +100,14 @@
             this.timeHour.Location = new System.Drawing.Point(15, 125);
             this.timeHour.Name = "timeHour";
             this.timeHour.Size = new System.Drawing.Size(32, 20);
-            this.timeHour.TabIndex = 6;
+            this.timeHour.TabIndex = 3;
             // 
             // timeMinutes
             // 
             this.timeMinutes.Location = new System.Drawing.Point(62, 125);
             this.timeMinutes.Name = "timeMinutes";
             this.timeMinutes.Size = new System.Drawing.Size(32, 20);
-            this.timeMinutes.TabIndex = 7;
+            this.timeMinutes.TabIndex = 4;
             // 
             // locationLabel
             // 
@@ -131,7 +132,7 @@
             this.Details.Location = new System.Drawing.Point(15, 207);
             this.Details.Name = "Details";
             this.Details.Size = new System.Drawing.Size(100, 20);
-            this.Details.TabIndex = 10;
+            this.Details.TabIndex = 6;
             // 
             // alarmLabel
             // 
@@ -147,7 +148,7 @@
             this.Alarm.Location = new System.Drawing.Point(15, 246);
             this.Alarm.Name = "Alarm";
             this.Alarm.Size = new System.Drawing.Size(100, 20);
-            this.Alarm.TabIndex = 12;
+            this.Alarm.TabIndex = 7;
             // 
             // minutesBeforeLabel
             // 
