@@ -102,7 +102,7 @@
             this.Location.Name = "Location";
             this.Location.Size = new System.Drawing.Size(197, 20);
             this.Location.TabIndex = 5;
-            // 
+           
             // locationLabel
             // 
             this.locationLabel.AutoSize = true;

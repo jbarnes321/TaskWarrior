@@ -20,8 +20,7 @@ namespace TaskWarrior
         {
             InitializeComponent();
             tasks = new List<Task>();
-            //ReadTaskInfo();
-            
+            readTaskInfo();
         }
 
         private void createTask_Click(object sender, EventArgs e)
@@ -29,6 +28,11 @@ namespace TaskWarrior
             newTask = new NewTask(this);
             this.Hide();
             newTask.Show();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            writeTaskInfo();
         }
 
         public void addTask()
@@ -43,33 +47,78 @@ namespace TaskWarrior
 
 
 
-        private void ReadTaskInfo()
+        private void readTaskInfo()
         {
-            String path = @"C:\Users\Justin\Downloads\";
-            String in1 = "text1.txt";
-
+            String line;
+            String name, location, details;
+            int month, day, year, hour, minute, alarm;
             try
             {
-                // Read in text1
-                List<String> pass1 = new List<String>();
-                StreamReader sr1 = new StreamReader(path + in1);
-                while (sr1.Peek() > -1)
+                TextReader tr = new StreamReader("input.txt");
+
+                // This loops reads in all the data stored in the text file.  If
+                // there was no data, then it simply 
+                while ((line = tr.ReadLine()) != null)
                 {
-                    pass1.Add(sr1.ReadLine());
+                    name = line;
+                    month = Convert.ToInt32(tr.ReadLine());
+                    day = Convert.ToInt32(tr.ReadLine());
+                    year = Convert.ToInt32(tr.ReadLine());
+                    hour = Convert.ToInt32(tr.ReadLine());
+                    minute = Convert.ToInt32(tr.ReadLine());
+                    alarm = Convert.ToInt32(tr.ReadLine());
+                    location = tr.ReadLine();
+                    details = tr.ReadLine();
+
+                    if (location.Equals("FUCK"))
+                        location = "";
+                    if (details.Equals("FUCK"))
+                        details = "";
+
+                    tasks.Add(new Task(name, new DateTime(year, month, day, hour, 
+                        minute, 0), location, details, alarm));
                 }
-                sr1.Close();
-
-                for (int i = 0; i < pass1.Count; i++)
-                {
-                    //listBox1.Items.Add(pass1.ElementAt(i));
-                }
 
 
+                tasks.Sort((x, y) => DateTime.Compare(x.Date, y.Date));
+
+                foreach (Task t in tasks)
+                    taskList.Items.Add(t.Name + " Date:     " + t.Date);
+                tr.Close();
             }
-            catch (Exception)
+
+            catch (Exception e)
             {
-                Console.WriteLine("Error");
+                Console.WriteLine(e);
             }
+        }
+
+        public void writeTaskInfo()
+        {
+            TextWriter tw = new StreamWriter("input.txt");
+
+            foreach (Task task in tasks)
+            {
+                tw.WriteLine(task.Name);
+                tw.WriteLine(task.Date.Month);
+                tw.WriteLine(task.Date.Day);
+                tw.WriteLine(task.Date.Year);
+                tw.WriteLine(task.Date.Hour);
+                tw.WriteLine(task.Date.Minute);
+                tw.WriteLine(task.Alarm);
+
+                if (String.IsNullOrEmpty(task.Location))
+                    tw.WriteLine("FUCK");
+                else
+                    tw.WriteLine(task.Location);
+
+                if (String.IsNullOrEmpty(task.Details))
+                    tw.WriteLine("FUCK");
+                else
+                    tw.WriteLine(task.Details);
+            }
+
+            tw.Close();
         }
 
         public void editTask_Click(object sender, EventArgs e)
