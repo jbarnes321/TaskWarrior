@@ -12,13 +12,20 @@ namespace TaskWarrior
 {
     public partial class Tasks : Form
     {
-        public List<Task> tasks;
+        public List<Task> currentTasks;
+        public List<Task> previousTasks;
+        public List<Task> allTasks;
         private NewTask newTask;
         public DateTime alarmSoundTime;
+        private bool viewingCurrentTasks;
 
         public Tasks()
         {
             InitializeComponent();
+            currentTasks = new List<Task>();
+            previousTasks = new List<Task>();
+            allTasks = new List<Task>();
+            viewingCurrentTasks = true;
             tasks = new List<Task>();
             readTaskInfo();
         }
@@ -37,10 +44,27 @@ namespace TaskWarrior
 
         public void addTask()
         {
+            allTasks.Add(newTask.task);
+            allTasks.Sort((x, y) => DateTime.Compare(x.Date, y.Date));
             this.tasks.Add(newTask.task);
             tasks.Sort((x, y) => DateTime.Compare(x.Date, y.Date));
             taskList.Items.Clear();
 
+            foreach (Task t in allTasks)
+            {
+                if (t.Date > DateTime.Now)
+                {
+                    if (!currentTasks.Contains(t))
+                        currentTasks.Add(t);
+                }
+                else
+                {
+                    if (!previousTasks.Contains(t))
+                        previousTasks.Add(t);
+                }
+            }
+
+            currentTaskButton_Click(null, null);
             foreach(Task t in tasks)
                 taskList.Items.Add(t.Name + " Date:     " + t.Date);
         }
@@ -125,7 +149,7 @@ namespace TaskWarrior
         {
             try
             {
-                Task edittedTask = tasks[taskList.SelectedIndex];
+                Task edittedTask = currentTasks[taskList.SelectedIndex];
                 int editIndex = taskList.SelectedIndex;
 
                 newTask = new NewTask(this);
@@ -139,8 +163,9 @@ namespace TaskWarrior
             
                 this.Hide();
                 newTask.Show();
-            
-                tasks.Remove(edittedTask);
+
+                allTasks.Remove(edittedTask);
+                currentTasks.Remove(edittedTask);
                 taskList.Items.RemoveAt(editIndex);
             }
             catch { }
@@ -150,16 +175,46 @@ namespace TaskWarrior
         {
             int selectedIndex = taskList.SelectedIndex;
             try
-            {
-                tasks.RemoveAt(selectedIndex);
-                taskList.Items.RemoveAt(selectedIndex);
+            {   
+                if (viewingCurrentTasks)
+                {
+                    Task deleteTask = currentTasks[taskList.SelectedIndex];
+                    currentTasks.RemoveAt(selectedIndex);
+                    taskList.Items.RemoveAt(selectedIndex);
+                    allTasks.Remove(deleteTask);                    
+                    currentTaskButton_Click(null, null);
+                }
+                else
+                {
+                    Task deleteTask = previousTasks[taskList.SelectedIndex];
+                    previousTasks.RemoveAt(selectedIndex);
+                    taskList.Items.RemoveAt(selectedIndex);
+                    allTasks.Remove(deleteTask);                    
+                    previousTasksButton_Click(null, null);
+                }
+
             }
             catch { }
         }
 
+        private void currentTaskButton_Click(object sender, EventArgs e)
+        {
+            editTask.Enabled = true;
+            viewingCurrentTasks = true;
+            taskList.Items.Clear();
+            foreach(Task t in currentTasks)
+                taskList.Items.Add(t.Name + " Date:     " + t.Date);
+        }
 
+        private void previousTasksButton_Click(object sender, EventArgs e)
+        {
+            editTask.Enabled = false;
+            viewingCurrentTasks = false;
+            taskList.Items.Clear();
+            foreach (Task t in previousTasks)
+                taskList.Items.Add(t.Name + " Date:     " + t.Date);
+        }
 
-
-
+        
     }
 }
