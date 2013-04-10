@@ -82,7 +82,7 @@
             this.taskTime.Location = new System.Drawing.Point(11, 73);
             this.taskTime.Name = "taskTime";
             this.taskTime.Size = new System.Drawing.Size(200, 20);
-            this.taskTime.TabIndex = 3;
+            this.taskTime.TabIndex = 2;
             // 
             // hourLabel
             // 
@@ -101,6 +101,8 @@
             this.Location.Size = new System.Drawing.Size(197, 20);
             this.Location.TabIndex = 5;
             // 
+            this.timeHour.TabIndex = 3;
+            this.timeMinutes.TabIndex = 4;
             // locationLabel
             // 
             this.locationLabel.AutoSize = true;
@@ -125,7 +127,7 @@
             this.Details.MaxLength = 50;
             this.Details.Name = "Details";
             this.Details.Size = new System.Drawing.Size(197, 20);
-            this.Details.TabIndex = 10;
+            this.Details.TabIndex = 6;
             // 
             // alarmLabel
             // 
@@ -142,7 +144,7 @@
             this.Alarm.MaxLength = 3;
             this.Alarm.Name = "Alarm";
             this.Alarm.Size = new System.Drawing.Size(45, 20);
-            this.Alarm.TabIndex = 12;
+            this.Alarm.TabIndex = 7;
             // 
             // minutesBeforeLabel
             // 
