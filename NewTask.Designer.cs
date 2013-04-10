@@ -101,8 +101,6 @@
             this.Location.Size = new System.Drawing.Size(197, 20);
             this.Location.TabIndex = 5;
             // 
-            this.timeHour.TabIndex = 3;
-            this.timeMinutes.TabIndex = 4;
             // locationLabel
             // 
             this.locationLabel.AutoSize = true;

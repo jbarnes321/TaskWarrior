@@ -32,6 +32,8 @@
             this.editTask = new System.Windows.Forms.Button();
             this.deleteTask = new System.Windows.Forms.Button();
             this.taskList = new System.Windows.Forms.ListBox();
+            this.currentTaskButton = new System.Windows.Forms.Button();
+            this.previousTasksButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // createTask
@@ -72,11 +74,33 @@
             this.taskList.Size = new System.Drawing.Size(259, 199);
             this.taskList.TabIndex = 4;
             // 
+            // currentTaskButton
+            // 
+            this.currentTaskButton.Location = new System.Drawing.Point(12, 257);
+            this.currentTaskButton.Name = "currentTaskButton";
+            this.currentTaskButton.Size = new System.Drawing.Size(75, 35);
+            this.currentTaskButton.TabIndex = 5;
+            this.currentTaskButton.Text = "Current Tasks";
+            this.currentTaskButton.UseVisualStyleBackColor = true;
+            this.currentTaskButton.Click += new System.EventHandler(this.currentTaskButton_Click);
+            // 
+            // previousTasksButton
+            // 
+            this.previousTasksButton.Location = new System.Drawing.Point(106, 257);
+            this.previousTasksButton.Name = "previousTasksButton";
+            this.previousTasksButton.Size = new System.Drawing.Size(75, 35);
+            this.previousTasksButton.TabIndex = 6;
+            this.previousTasksButton.Text = "Previous Tasks";
+            this.previousTasksButton.UseVisualStyleBackColor = true;
+            this.previousTasksButton.Click += new System.EventHandler(this.previousTasksButton_Click);
+            // 
             // Tasks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 346);
+            this.ClientSize = new System.Drawing.Size(278, 317);
+            this.Controls.Add(this.previousTasksButton);
+            this.Controls.Add(this.currentTaskButton);
             this.Controls.Add(this.taskList);
             this.Controls.Add(this.deleteTask);
             this.Controls.Add(this.editTask);
@@ -93,5 +117,7 @@
         private System.Windows.Forms.Button editTask;
         private System.Windows.Forms.Button deleteTask;
         private System.Windows.Forms.ListBox taskList;
+        private System.Windows.Forms.Button currentTaskButton;
+        private System.Windows.Forms.Button previousTasksButton;
     }
 }
