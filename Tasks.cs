@@ -14,6 +14,7 @@ namespace TaskWarrior
     {
         public List<Task> tasks;
         private NewTask newTask;
+        public DateTime alarmSoundTime;
 
         public Tasks()
         {
