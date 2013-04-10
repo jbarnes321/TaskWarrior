@@ -16,6 +16,7 @@ namespace TaskWarrior
         public List<Task> previousTasks;
         public List<Task> allTasks;
         private NewTask newTask;
+        public DateTime alarmSoundTime;
         private bool viewingCurrentTasks;
 
         public Tasks()
