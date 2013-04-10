@@ -25,6 +25,7 @@ namespace TaskWarrior
             previousTasks = new List<Task>();
             allTasks = new List<Task>();
             viewingCurrentTasks = true;
+            readTaskInfo();
         }
 
         private void createTask_Click(object sender, EventArgs e)
@@ -59,6 +60,8 @@ namespace TaskWarrior
                 }
             }
 
+            currentTasks.Sort((x, y) => DateTime.Compare(x.Date, y.Date));
+            previousTasks.Sort((x, y) => DateTime.Compare(x.Date, y.Date));
             currentTaskButton_Click(null, null);
         }
 
@@ -92,15 +95,30 @@ namespace TaskWarrior
                     if (details.Equals("FUCK"))
                         details = "";
 
-                    tasks.Add(new Task(name, new DateTime(year, month, day, hour, 
+                    allTasks.Add(new Task(name, new DateTime(year, month, day, hour, 
                         minute, 0), location, details, alarm));
                 }
 
 
-                tasks.Sort((x, y) => DateTime.Compare(x.Date, y.Date));
+                allTasks.Sort((x, y) => DateTime.Compare(x.Date, y.Date));
 
-                foreach (Task t in tasks)
+                foreach (Task t in allTasks)
+                {
+                    if (t.Date > DateTime.Now)
+                    {
+                        if (!currentTasks.Contains(t))
+                            currentTasks.Add(t);
+                    }
+                    else
+                    {
+                        if (!previousTasks.Contains(t))
+                            previousTasks.Add(t);
+                    }
+                }
+
+                foreach (Task t in currentTasks)
                     taskList.Items.Add(t.Name + " Date:     " + t.Date);
+
                 tr.Close();
             }
 
@@ -114,7 +132,7 @@ namespace TaskWarrior
         {
             TextWriter tw = new StreamWriter("input.txt");
 
-            foreach (Task task in tasks)
+            foreach (Task task in allTasks)
             {
                 tw.WriteLine(task.Name);
                 tw.WriteLine(task.Date.Month);
