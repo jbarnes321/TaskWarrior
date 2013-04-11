@@ -122,8 +122,6 @@ namespace TaskWarrior
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             parent.Show();
-            //e.Cancel = true;
-            //base.OnFormClosing(e);
         }
    
     }

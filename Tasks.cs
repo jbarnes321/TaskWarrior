@@ -100,9 +100,9 @@ namespace TaskWarrior
                     location = tr.ReadLine();
                     details = tr.ReadLine();
 
-                    if (location.Equals("FUCK"))
+                    if (location.Equals("EMPTY"))
                         location = "";
-                    if (details.Equals("FUCK"))
+                    if (details.Equals("EMPTY"))
                         details = "";
 
                     allTasks.Add(new Task(name, new DateTime(year, month, day, hour, 
@@ -154,12 +154,12 @@ namespace TaskWarrior
                 tw.WriteLine(task.Alarm);
 
                 if (String.IsNullOrEmpty(task.Location))
-                    tw.WriteLine("FUCK");
+                    tw.WriteLine("EMPTY");
                 else
                     tw.WriteLine(task.Location);
 
                 if (String.IsNullOrEmpty(task.Details))
-                    tw.WriteLine("FUCK");
+                    tw.WriteLine("EMPTY");
                 else
                     tw.WriteLine(task.Details);
             }
@@ -252,6 +252,16 @@ namespace TaskWarrior
                 AlarmTimer.Enabled = true;
                 SoundPlayer simpleSound = new SoundPlayer(@"DarkLord.wav");
                 simpleSound.Play();
+
+                MessageBox.Show("ALARM!");
+
+                Task tempTask = currentTasks.ElementAt(0);
+                currentTasks.Remove(tempTask);
+                previousTasks.Add(tempTask);
+
+                taskList.Items.Clear();
+                foreach (Task t in currentTasks)
+                    taskList.Items.Add(t.Name + " Date:     " + t.Date);
             }
         }
 
