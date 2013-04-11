@@ -268,8 +268,6 @@
         private System.Windows.Forms.Label minutesBeforeLabel;
         private System.Windows.Forms.Button addTask;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton PMradio;
-        private System.Windows.Forms.RadioButton AMradio;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label minuteLabel;
         public System.Windows.Forms.TextBox TaskName;
@@ -279,6 +277,8 @@
         public System.Windows.Forms.TextBox Alarm;
         public System.Windows.Forms.TextBox HourBox;
         public System.Windows.Forms.TextBox MinuteBox;
+        public System.Windows.Forms.RadioButton PMradio;
+        public System.Windows.Forms.RadioButton AMradio;
 
     }
 }

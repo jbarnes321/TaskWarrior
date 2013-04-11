@@ -124,5 +124,6 @@ namespace TaskWarrior
             parent.Show();
         }
    
+                SoundPlayer simpleSound = new SoundPlayer("DarkLord.wav");
     }
 }
