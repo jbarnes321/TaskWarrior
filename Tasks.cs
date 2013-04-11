@@ -167,7 +167,16 @@ namespace TaskWarrior
                 newTask = new NewTask(this);
                 newTask.TaskName.Text = edittedTask.Name;
                 newTask.taskTime.Value = Convert.ToDateTime(edittedTask.Date);
-                newTask.HourBox.Text = Convert.ToString(edittedTask.Date.Hour);
+                if (edittedTask.Date.Hour > 12)
+                {
+                    newTask.HourBox.Text = Convert.ToString(edittedTask.Date.Hour - 12);
+                    newTask.PMradio.Checked = true;
+                }
+                else
+                {
+                    newTask.HourBox.Text = Convert.ToString(edittedTask.Date.Hour);
+                    newTask.AMradio.Checked = true;
+                }
                 newTask.MinuteBox.Text = Convert.ToString(edittedTask.Date.Minute);
                 newTask.Location.Text = edittedTask.Location;
                 newTask.Details.Text = edittedTask.Details;
@@ -179,6 +188,7 @@ namespace TaskWarrior
                 allTasks.Remove(edittedTask);
                 currentTasks.Remove(edittedTask);
                 taskList.Items.RemoveAt(editIndex);
+
             }
             catch { }
         }

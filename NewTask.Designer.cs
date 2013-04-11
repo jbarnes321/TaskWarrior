@@ -102,7 +102,7 @@
             this.Location.Name = "Location";
             this.Location.Size = new System.Drawing.Size(197, 20);
             this.Location.TabIndex = 5;
-           
+            // 
             // locationLabel
             // 
             this.locationLabel.AutoSize = true;
@@ -274,8 +274,6 @@
         private System.Windows.Forms.Label minutesBeforeLabel;
         private System.Windows.Forms.Button addTask;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton PMradio;
-        private System.Windows.Forms.RadioButton AMradio;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label minuteLabel;
         public System.Windows.Forms.TextBox TaskName;
@@ -286,6 +284,8 @@
         public System.Windows.Forms.TextBox HourBox;
         public System.Windows.Forms.TextBox MinuteBox;
         private System.Windows.Forms.Timer AlarmTimer;
+        public System.Windows.Forms.RadioButton PMradio;
+        public System.Windows.Forms.RadioButton AMradio;
 
     }
 }

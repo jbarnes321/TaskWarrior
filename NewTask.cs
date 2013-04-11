@@ -109,8 +109,8 @@ namespace TaskWarrior
 
             task = new Task(taskName, new DateTime(date.Year, date.Month, date.Day,
                         hour, minute, 0), location, details, alarmTime);
-                parent.alarmSoundTime = new DateTime(date.Year, date.Month, date.Day, hour, minute - alarmTime,0);
-                AlarmTimer.Enabled = true;
+                //parent.alarmSoundTime = new DateTime(date.Year, date.Month, date.Day, hour, minute - alarmTime,0);
+               // AlarmTimer.Enabled = true;
             this.parent.Show();
             this.parent.addTask();
             this.Hide();
@@ -134,7 +134,7 @@ namespace TaskWarrior
             //alarmSoundTimeBuffer = new DateTime(parent.alarmSoundTime.Year, parent.alarmSoundTime.Month, parent.alarmSoundTime.Day, parent.alarmSoundTime.Hour, parent.alarmSoundTime.Minute, 1);
             if (DateTime.Now.AddSeconds(-2) < parent.alarmSoundTime && DateTime.Now.AddSeconds(2) > parent.alarmSoundTime)
             {
-                SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\Sean\Documents\Visual Studio 2010\Projects\TaskWarrior\DarkLord.wav");
+                SoundPlayer simpleSound = new SoundPlayer("DarkLord.wav");
                 simpleSound.Play();
 
             }
