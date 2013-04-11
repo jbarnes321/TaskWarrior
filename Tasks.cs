@@ -52,7 +52,12 @@ namespace TaskWarrior
                 if (t.Date > DateTime.Now)
                 {
                     if (!currentTasks.Contains(t))
+                    {
                         currentTasks.Add(t);
+                        alarmSoundTime = currentTasks.ElementAt(0).Date;
+                        alarmSoundTime = alarmSoundTime.AddMinutes(-(currentTasks.ElementAt(0).Alarm));
+                    }
+
                 }
                 else
                 {

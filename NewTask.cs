@@ -109,8 +109,7 @@ namespace TaskWarrior
 
             task = new Task(taskName, new DateTime(date.Year, date.Month, date.Day,
                         hour, minute, 0), location, details, alarmTime);
-                parent.alarmSoundTime = new DateTime(date.Year, date.Month, date.Day, hour, minute,0);
-                parent.alarmSoundTime = parent.alarmSoundTime.AddMinutes(-alarmTime);
+               
                 AlarmTimer.Enabled = true;
             this.parent.Show();
             this.parent.addTask();
@@ -131,10 +130,7 @@ namespace TaskWarrior
 
        
          private void AlarmTimer_Tick(object sender, EventArgs e)
-        {
-            parent.alarmSoundTime = parent.currentTasks.ElementAt(0).Date;
-            parent.alarmSoundTime = parent.alarmSoundTime.AddMinutes(-(parent.currentTasks.ElementAt(0).Alarm));
-
+         {        
             if (parent.alarmSoundTime > DateTime.Now.AddSeconds(-.1) && parent.alarmSoundTime < DateTime.Now.AddSeconds(.1))
             {
                 Console.WriteLine(DateTime.Now + " " + parent.alarmSoundTime);
