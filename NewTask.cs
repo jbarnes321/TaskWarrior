@@ -109,7 +109,8 @@ namespace TaskWarrior
 
             task = new Task(taskName, new DateTime(date.Year, date.Month, date.Day,
                         hour, minute, 0), location, details, alarmTime);
-                parent.alarmSoundTime = new DateTime(date.Year, date.Month, date.Day, hour, minute - alarmTime,0);
+                parent.alarmSoundTime = new DateTime(date.Year, date.Month, date.Day, hour, minute,0);
+                parent.alarmSoundTime = parent.alarmSoundTime.AddMinutes(-alarmTime);
                 AlarmTimer.Enabled = true;
             this.parent.Show();
             this.parent.addTask();
@@ -128,12 +129,17 @@ namespace TaskWarrior
             //base.OnFormClosing(e);
         }
 
-        private void AlarmTimer_Tick(object sender, EventArgs e)
+       
+         private void AlarmTimer_Tick(object sender, EventArgs e)
         {
-          //  DateTime alarmSoundTimeBuffer;
-            //alarmSoundTimeBuffer = new DateTime(parent.alarmSoundTime.Year, parent.alarmSoundTime.Month, parent.alarmSoundTime.Day, parent.alarmSoundTime.Hour, parent.alarmSoundTime.Minute, 1);
-            if (DateTime.Now.AddSeconds(-2) < parent.alarmSoundTime && DateTime.Now.AddSeconds(2) > parent.alarmSoundTime)
+            parent.alarmSoundTime = parent.currentTasks.ElementAt(0).Date;
+            parent.alarmSoundTime = parent.alarmSoundTime.AddMinutes(-(parent.currentTasks.ElementAt(0).Alarm));
+
+            if (parent.alarmSoundTime > DateTime.Now.AddSeconds(-.1) && parent.alarmSoundTime < DateTime.Now.AddSeconds(.1))
             {
+                Console.WriteLine(DateTime.Now + " " + parent.alarmSoundTime);
+               
+                AlarmTimer.Enabled = true;
                 SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\Sean\Documents\Visual Studio 2010\Projects\TaskWarrior\DarkLord.wav");
                 simpleSound.Play();
 
