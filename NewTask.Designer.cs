@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.taskNameLabel = new System.Windows.Forms.Label();
             this.TaskName = new System.Windows.Forms.TextBox();
             this.dateTimeLabel = new System.Windows.Forms.Label();
@@ -49,7 +48,6 @@
             this.HourBox = new System.Windows.Forms.TextBox();
             this.minuteLabel = new System.Windows.Forms.Label();
             this.MinuteBox = new System.Windows.Forms.TextBox();
-            this.AlarmTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -228,10 +226,6 @@
             this.MinuteBox.Size = new System.Drawing.Size(37, 20);
             this.MinuteBox.TabIndex = 21;
             // 
-            // AlarmTimer
-            // 
-            this.AlarmTimer.Tick += new System.EventHandler(this.AlarmTimer_Tick);
-            // 
             // NewTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -283,7 +277,6 @@
         public System.Windows.Forms.TextBox Alarm;
         public System.Windows.Forms.TextBox HourBox;
         public System.Windows.Forms.TextBox MinuteBox;
-        private System.Windows.Forms.Timer AlarmTimer;
         public System.Windows.Forms.RadioButton PMradio;
         public System.Windows.Forms.RadioButton AMradio;
 
