@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.createTask = new System.Windows.Forms.Button();
             this.editTask = new System.Windows.Forms.Button();
             this.deleteTask = new System.Windows.Forms.Button();
             this.taskList = new System.Windows.Forms.ListBox();
             this.currentTaskButton = new System.Windows.Forms.Button();
             this.previousTasksButton = new System.Windows.Forms.Button();
+            this.AlarmTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // createTask
@@ -94,6 +96,10 @@
             this.previousTasksButton.UseVisualStyleBackColor = true;
             this.previousTasksButton.Click += new System.EventHandler(this.previousTasksButton_Click);
             // 
+            // AlarmTimer
+            // 
+            this.AlarmTimer.Tick += new System.EventHandler(this.AlarmTimer_Tick);
+            // 
             // Tasks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -119,5 +125,6 @@
         private System.Windows.Forms.ListBox taskList;
         private System.Windows.Forms.Button currentTaskButton;
         private System.Windows.Forms.Button previousTasksButton;
+        private System.Windows.Forms.Timer AlarmTimer;
     }
 }

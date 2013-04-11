@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Media;
+
 
 namespace TaskWarrior
 {
@@ -27,6 +29,8 @@ namespace TaskWarrior
             allTasks = new List<Task>();
             viewingCurrentTasks = true;
             readTaskInfo();
+            AlarmTimer.Enabled = true;
+            
         }
 
         private void createTask_Click(object sender, EventArgs e)
@@ -132,6 +136,7 @@ namespace TaskWarrior
             {
                 Console.WriteLine(e);
             }
+
         }
 
         public void writeTaskInfo()
@@ -230,6 +235,24 @@ namespace TaskWarrior
             taskList.Items.Clear();
             foreach (Task t in previousTasks)
                 taskList.Items.Add(t.Name + " Date:     " + t.Date);
+        }
+
+        private void AlarmTimer_Tick(object sender, EventArgs e)
+        {
+            //Console.WriteLine(currentTasks.Count);
+            if (currentTasks.Count > 0)
+            {
+                alarmSoundTime = currentTasks.ElementAt(0).Date;
+                alarmSoundTime = alarmSoundTime.AddMinutes(-(currentTasks.ElementAt(0).Alarm));
+            }
+            if (alarmSoundTime > DateTime.Now.AddSeconds(-.1) && alarmSoundTime < DateTime.Now.AddSeconds(.1))
+            {
+               // Console.WriteLine(DateTime.Now + " " + alarmSoundTime);
+
+                AlarmTimer.Enabled = true;
+                SoundPlayer simpleSound = new SoundPlayer(@"DarkLord.wav");
+                simpleSound.Play();
+            }
         }
 
         

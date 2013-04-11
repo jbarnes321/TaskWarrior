@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Media;
 
 namespace TaskWarrior
 {
@@ -110,7 +109,6 @@ namespace TaskWarrior
             task = new Task(taskName, new DateTime(date.Year, date.Month, date.Day,
                         hour, minute, 0), location, details, alarmTime);
                
-                AlarmTimer.Enabled = true;
             this.parent.Show();
             this.parent.addTask();
             this.Hide();
@@ -127,21 +125,6 @@ namespace TaskWarrior
             //e.Cancel = true;
             //base.OnFormClosing(e);
         }
-
-       
-         private void AlarmTimer_Tick(object sender, EventArgs e)
-         {        
-            if (parent.alarmSoundTime > DateTime.Now.AddSeconds(-.1) && parent.alarmSoundTime < DateTime.Now.AddSeconds(.1))
-            {
-                Console.WriteLine(DateTime.Now + " " + parent.alarmSoundTime);
-               
-                AlarmTimer.Enabled = true;
-                SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\Sean\Documents\Visual Studio 2010\Projects\TaskWarrior\DarkLord.wav");
-                simpleSound.Play();
-
-            }
-        }
-
-    
+   
     }
 }
