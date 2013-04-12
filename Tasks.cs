@@ -250,12 +250,10 @@ namespace TaskWarrior
             }
             if (alarmSoundTime > DateTime.Now.AddSeconds(-.1) && alarmSoundTime < DateTime.Now.AddSeconds(.1))
             {
-                // Console.WriteLine(DateTime.Now + " " + alarmSoundTime);
+                alarmSoundTime = alarmSoundTime.AddDays(-1f);
                 Console.WriteLine(AlarmSoundChoice);
 
                 AlarmTimer.Enabled = true;
-                MessageBox.Show("ALARM!");
-
                     
                 Task tempTask = currentTasks.ElementAt(0);
                 currentTasks.Remove(tempTask);
