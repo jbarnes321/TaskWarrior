@@ -252,19 +252,10 @@ namespace TaskWarrior
                 Console.WriteLine(AlarmSoundChoice);
 
                 AlarmTimer.Enabled = true;
-                MessageBox.Show("ALARM!");
-
-                    
-                Task tempTask = currentTasks.ElementAt(0);
-                currentTasks.Remove(tempTask);
-                previousTasks.Add(tempTask);
-
-                taskList.Items.Clear();
-                foreach (Task t in currentTasks)
-                    taskList.Items.Add(t.Name + " Date:     " + t.Date);
-
+<<<<<<< HEAD
                 if (AlarmSoundChoice == "DarkLord.wav")
                 {
+
                     SoundPlayer playSound = new SoundPlayer(@"DarkLord.wav");
                     playSound.Play();
                 }
@@ -288,6 +279,20 @@ namespace TaskWarrior
                     SoundPlayer playSound = new SoundPlayer(@"Ascent.wav");
                     playSound.Play();
                 }
+=======
+                SoundPlayer simpleSound = new SoundPlayer(@"DarkLord.wav");
+                simpleSound.Play();
+
+                MessageBox.Show("ALARM!");
+
+                Task tempTask = currentTasks.ElementAt(0);
+                currentTasks.Remove(tempTask);
+                previousTasks.Add(tempTask);
+
+                taskList.Items.Clear();
+                foreach (Task t in currentTasks)
+                    taskList.Items.Add(t.Name + " Date:     " + t.Date);
+>>>>>>> 86b3bbf732c92d46f9077f1211da16deace9bb91
             }
 
         }
