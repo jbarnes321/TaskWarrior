@@ -20,6 +20,7 @@ namespace TaskWarrior
         private NewTask newTask;
         public DateTime alarmSoundTime;
         private bool viewingCurrentTasks;
+        public string AlarmSoundChoice = "DarkLord.wav";
 
         public Tasks()
         {
@@ -177,16 +178,7 @@ namespace TaskWarrior
                 newTask = new NewTask(this);
                 newTask.TaskName.Text = edittedTask.Name;
                 newTask.taskTime.Value = Convert.ToDateTime(edittedTask.Date);
-                if (edittedTask.Date.Hour > 12)
-                {
-                    newTask.HourBox.Text = Convert.ToString(edittedTask.Date.Hour - 12);
-                    newTask.PMradio.Checked = true;
-                }
-                else
-                {
-                    newTask.HourBox.Text = Convert.ToString(edittedTask.Date.Hour);
-                    newTask.AMradio.Checked = true;
-                }
+                newTask.HourBox.Text = Convert.ToString(edittedTask.Date.Hour);
                 newTask.MinuteBox.Text = Convert.ToString(edittedTask.Date.Minute);
                 newTask.Location.Text = edittedTask.Location;
                 newTask.Details.Text = edittedTask.Details;
@@ -198,7 +190,6 @@ namespace TaskWarrior
                 allTasks.Remove(edittedTask);
                 currentTasks.Remove(edittedTask);
                 taskList.Items.RemoveAt(editIndex);
-
             }
             catch { }
         }
@@ -257,13 +248,47 @@ namespace TaskWarrior
             }
             if (alarmSoundTime > DateTime.Now.AddSeconds(-.1) && alarmSoundTime < DateTime.Now.AddSeconds(.1))
             {
-               // Console.WriteLine(DateTime.Now + " " + alarmSoundTime);
+                // Console.WriteLine(DateTime.Now + " " + alarmSoundTime);
+                Console.WriteLine(AlarmSoundChoice);
 
                 AlarmTimer.Enabled = true;
-                SoundPlayer simpleSound = new SoundPlayer(@"DarkLord.wav");
-                simpleSound.Play();
+                if (AlarmSoundChoice == "DarkLord.wav")
+                {
+
+                    SoundPlayer playSound = new SoundPlayer(@"DarkLord.wav");
+                    playSound.Play();
+                }
+                if (AlarmSoundChoice == "phonedial.wav")
+                {
+                    SoundPlayer playSound = new SoundPlayer(@"phonedial.wav");
+                    playSound.Play();
+                }
+                if (AlarmSoundChoice == "Synth.wav")
+                {
+                    SoundPlayer playSound = new SoundPlayer(@"Synth.wav");
+                    playSound.Play();
+                }
+                if (AlarmSoundChoice == "BabyCry.wav")
+                {
+                    SoundPlayer playSound = new SoundPlayer(@"BabyCry.wav");
+                    playSound.Play();
+                }
+                if (AlarmSoundChoice == "Ascent.wav")
+                {
+                    SoundPlayer playSound = new SoundPlayer(@"Ascent.wav");
+                    playSound.Play();
+                }
             }
+
         }
+
+        private void AlarmSoundPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AlarmSoundChoice = AlarmSoundPicker.Text;
+            Console.WriteLine(AlarmSoundChoice);
+        }
+
+       
 
         
     }
