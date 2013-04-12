@@ -134,6 +134,5 @@ namespace TaskWarrior
             else
                 parent.Show();
         }
-   
     }
 }

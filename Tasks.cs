@@ -250,15 +250,12 @@ namespace TaskWarrior
             }
             if (alarmSoundTime > DateTime.Now.AddSeconds(-.1) && alarmSoundTime < DateTime.Now.AddSeconds(.1))
             {
-                this.alarmSoundTime.AddDays(-5);
+                alarmSoundTime = alarmSoundTime.AddDays(-1f);
                 Console.WriteLine(alarmSoundTime);
                
-                // Console.WriteLine(DateTime.Now + " " + alarmSoundTime);
                 Console.WriteLine(AlarmSoundChoice);
  
                AlarmTimer.Enabled = true;
-                MessageBox.Show("ALARM!");
-
                     
                 Task tempTask = currentTasks.ElementAt(0);
                 currentTasks.Remove(tempTask);
@@ -301,6 +298,29 @@ namespace TaskWarrior
         {
             AlarmSoundChoice = AlarmSoundPicker.Text;
             Console.WriteLine(AlarmSoundChoice);
+        }
+
+        private void detailsButton_Click(object sender, EventArgs e)
+        {
+            String detailsMessage;
+            Task selectedTask;
+            try
+            {
+                if (viewingCurrentTasks)
+                    selectedTask = currentTasks[taskList.SelectedIndex];
+                else
+                    selectedTask = previousTasks[taskList.SelectedIndex];
+
+                detailsMessage = "Name: " + selectedTask.Name
+                                + "\nDate: " + selectedTask.Date
+                                + "\nLocation: " + selectedTask.Location
+                                + "\nDetails: " + selectedTask.Details
+                                + "\nAlarm: " + selectedTask.Alarm;
+
+
+                MessageBox.Show(detailsMessage);
+            }
+            catch { }
         }
 
        

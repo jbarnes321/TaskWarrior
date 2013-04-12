@@ -38,6 +38,7 @@
             this.AlarmTimer = new System.Windows.Forms.Timer(this.components);
             this.AlarmSoundPicker = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.detailsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // createTask
@@ -80,7 +81,7 @@
             // 
             // currentTaskButton
             // 
-            this.currentTaskButton.Location = new System.Drawing.Point(12, 257);
+            this.currentTaskButton.Location = new System.Drawing.Point(13, 306);
             this.currentTaskButton.Name = "currentTaskButton";
             this.currentTaskButton.Size = new System.Drawing.Size(75, 35);
             this.currentTaskButton.TabIndex = 5;
@@ -90,7 +91,7 @@
             // 
             // previousTasksButton
             // 
-            this.previousTasksButton.Location = new System.Drawing.Point(106, 257);
+            this.previousTasksButton.Location = new System.Drawing.Point(106, 306);
             this.previousTasksButton.Name = "previousTasksButton";
             this.previousTasksButton.Size = new System.Drawing.Size(75, 35);
             this.previousTasksButton.TabIndex = 6;
@@ -126,11 +127,22 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "AlarmSound:";
             // 
+            // detailsButton
+            // 
+            this.detailsButton.Location = new System.Drawing.Point(13, 257);
+            this.detailsButton.Name = "detailsButton";
+            this.detailsButton.Size = new System.Drawing.Size(75, 23);
+            this.detailsButton.TabIndex = 9;
+            this.detailsButton.Text = "Task Details";
+            this.detailsButton.UseVisualStyleBackColor = true;
+            this.detailsButton.Click += new System.EventHandler(this.detailsButton_Click);
+            // 
             // Tasks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(313, 317);
+            this.ClientSize = new System.Drawing.Size(313, 353);
+            this.Controls.Add(this.detailsButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.AlarmSoundPicker);
             this.Controls.Add(this.previousTasksButton);
@@ -157,5 +169,6 @@
         private System.Windows.Forms.Timer AlarmTimer;
         private System.Windows.Forms.ComboBox AlarmSoundPicker;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button detailsButton;
     }
 }
