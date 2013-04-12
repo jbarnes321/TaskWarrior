@@ -12,6 +12,7 @@ namespace TaskWarrior
     public partial class NewTask : Form
     {
         public Task task;
+        public bool editing;
         Tasks parent;
         String taskName;
         String location;
@@ -26,6 +27,7 @@ namespace TaskWarrior
         public NewTask(Tasks parent)
         {
             this.parent = parent;
+            this.editing = false;
             InitializeComponent();
         }
 
@@ -121,7 +123,16 @@ namespace TaskWarrior
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            parent.Show();
+            if (this.editing)
+            {
+                task = parent.edittedTask;
+                parent.addTask();
+                this.editing = false;
+                this.parent.Show();
+            }
+
+            else
+                parent.Show();
         }
    
     }

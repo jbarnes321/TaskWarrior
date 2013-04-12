@@ -17,6 +17,7 @@ namespace TaskWarrior
         public List<Task> currentTasks;
         public List<Task> previousTasks;
         public List<Task> allTasks;
+        public Task edittedTask;
         private NewTask newTask;
         public DateTime alarmSoundTime;
         private bool viewingCurrentTasks;
@@ -172,7 +173,7 @@ namespace TaskWarrior
         {
             try
             {
-                Task edittedTask = currentTasks[taskList.SelectedIndex];
+                edittedTask = currentTasks[taskList.SelectedIndex];
                 int editIndex = taskList.SelectedIndex;
 
                 newTask = new NewTask(this);
@@ -183,7 +184,8 @@ namespace TaskWarrior
                 newTask.Location.Text = edittedTask.Location;
                 newTask.Details.Text = edittedTask.Details;
                 newTask.Alarm.Text = edittedTask.Alarm.ToString();
-            
+
+                newTask.editing = true;
                 this.Hide();
                 newTask.Show();
 
