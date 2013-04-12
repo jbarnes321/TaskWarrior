@@ -106,11 +106,11 @@
             // 
             this.AlarmSoundPicker.FormattingEnabled = true;
             this.AlarmSoundPicker.Items.AddRange(new object[] {
-            "Ascent.wav",
-            "BabyCry.wav",
-            "DarkLord.wav",
-            "phonedial.wav",
-            "Synth.wav"});
+            "TrainHornLow.wav",
+            "RedAlert.wav",
+            "Phone_Vibrating.wav",
+            "DoorBell.wav",
+            "hermain-cain-excuse-me.wav"});
             this.AlarmSoundPicker.Location = new System.Drawing.Point(187, 271);
             this.AlarmSoundPicker.Name = "AlarmSoundPicker";
             this.AlarmSoundPicker.Size = new System.Drawing.Size(121, 21);

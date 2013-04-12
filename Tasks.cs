@@ -21,7 +21,7 @@ namespace TaskWarrior
         private NewTask newTask;
         public DateTime alarmSoundTime;
         private bool viewingCurrentTasks;
-        public string AlarmSoundChoice = "DarkLord.wav";
+        public string AlarmSoundChoice = "DoorBell.wav";
 
         public Tasks()
         {
@@ -250,10 +250,13 @@ namespace TaskWarrior
             }
             if (alarmSoundTime > DateTime.Now.AddSeconds(-.1) && alarmSoundTime < DateTime.Now.AddSeconds(.1))
             {
+                this.alarmSoundTime.AddDays(-5);
+                Console.WriteLine(alarmSoundTime);
+               
                 // Console.WriteLine(DateTime.Now + " " + alarmSoundTime);
                 Console.WriteLine(AlarmSoundChoice);
-
-                AlarmTimer.Enabled = true;
+ 
+               AlarmTimer.Enabled = true;
                 MessageBox.Show("ALARM!");
 
                     
@@ -265,29 +268,29 @@ namespace TaskWarrior
                 foreach (Task t in currentTasks)
                     taskList.Items.Add(t.Name + " Date:     " + t.Date);
 
-                if (AlarmSoundChoice == "DarkLord.wav")
+                if (AlarmSoundChoice == "TrainHornLow.wav")
                 {
-                    SoundPlayer playSound = new SoundPlayer(@"DarkLord.wav");
+                    SoundPlayer playSound = new SoundPlayer(@"TrainHornLow.wav");
                     playSound.Play();
                 }
-                if (AlarmSoundChoice == "phonedial.wav")
+                if (AlarmSoundChoice == "RedAlert.wav")
                 {
-                    SoundPlayer playSound = new SoundPlayer(@"phonedial.wav");
+                    SoundPlayer playSound = new SoundPlayer(@"RedAlert.wav");
                     playSound.Play();
                 }
-                if (AlarmSoundChoice == "Synth.wav")
+                if (AlarmSoundChoice == "Phone_Vibrating.wav")
                 {
-                    SoundPlayer playSound = new SoundPlayer(@"Synth.wav");
+                    SoundPlayer playSound = new SoundPlayer(@"Phone_Vibrating.wav");
                     playSound.Play();
                 }
-                if (AlarmSoundChoice == "BabyCry.wav")
+                if (AlarmSoundChoice == "DoorBell.wav")
                 {
-                    SoundPlayer playSound = new SoundPlayer(@"BabyCry.wav");
+                    SoundPlayer playSound = new SoundPlayer(@"DoorBell.wav");
                     playSound.Play();
                 }
-                if (AlarmSoundChoice == "Ascent.wav")
+                if (AlarmSoundChoice == "hermain-cain-excuse-me.wav")
                 {
-                    SoundPlayer playSound = new SoundPlayer(@"Ascent.wav");
+                    SoundPlayer playSound = new SoundPlayer(@"hermain-cain-excuse-me.wav");
                     playSound.Play();
                 }
             }
