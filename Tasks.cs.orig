@@ -250,12 +250,22 @@ namespace TaskWarrior
             }
             if (alarmSoundTime > DateTime.Now.AddSeconds(-.1) && alarmSoundTime < DateTime.Now.AddSeconds(.1))
             {
-                alarmSoundTime = alarmSoundTime.AddDays(-1f);
+<<<<<<< HEAD
+                this.alarmSoundTime.AddDays(-5);
                 Console.WriteLine(alarmSoundTime);
                
+                // Console.WriteLine(DateTime.Now + " " + alarmSoundTime);
                 Console.WriteLine(AlarmSoundChoice);
  
                AlarmTimer.Enabled = true;
+                MessageBox.Show("ALARM!");
+
+=======
+                alarmSoundTime = alarmSoundTime.AddDays(-1f);
+                Console.WriteLine(AlarmSoundChoice);
+
+                AlarmTimer.Enabled = true;
+>>>>>>> dfff78ebc34a54c94e5c439f2c205edb3f922a9b
                     
                 Task tempTask = currentTasks.ElementAt(0);
                 currentTasks.Remove(tempTask);
@@ -290,15 +300,6 @@ namespace TaskWarrior
                     SoundPlayer playSound = new SoundPlayer(@"hermain-cain-excuse-me.wav");
                     playSound.Play();
                 }
-                string detailsMessage;
-                detailsMessage = "Name: " + currentTasks.ElementAt(0).Name
-                                + "\nDate: " + currentTasks.ElementAt(0).Date
-                                + "\nLocation: " + currentTasks.ElementAt(0).Location
-                                + "\nDetails: " + currentTasks.ElementAt(0).Details
-                                + "\nAlarm: " + currentTasks.ElementAt(0).Alarm;
-
-
-                MessageBox.Show(detailsMessage);
             }
 
         }
@@ -326,8 +327,8 @@ namespace TaskWarrior
                                 + "\nDetails: " + selectedTask.Details
                                 + "\nAlarm: " + selectedTask.Alarm;
 
+
                 MessageBox.Show(detailsMessage);
-                this.Show();
             }
             catch { }
         }
