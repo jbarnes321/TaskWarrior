@@ -300,6 +300,29 @@ namespace TaskWarrior
             Console.WriteLine(AlarmSoundChoice);
         }
 
+        private void detailsButton_Click(object sender, EventArgs e)
+        {
+            String detailsMessage;
+            Task selectedTask;
+            try
+            {
+                if (viewingCurrentTasks)
+                    selectedTask = currentTasks[taskList.SelectedIndex];
+                else
+                    selectedTask = previousTasks[taskList.SelectedIndex];
+
+                detailsMessage = "Name: " + selectedTask.Name
+                                + "\nDate: " + selectedTask.Date
+                                + "\nLocation: " + selectedTask.Location
+                                + "\nDetails: " + selectedTask.Details
+                                + "\nAlarm: " + selectedTask.Alarm;
+
+
+                MessageBox.Show(detailsMessage);
+            }
+            catch { }
+        }
+
        
 
         
