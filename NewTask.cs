@@ -105,7 +105,7 @@ namespace TaskWarrior
             }
 
         
-            if (PMradio.Checked == true)
+            if (PMradio.Checked == true && hour < 12)
                 hour += 12;
 
             task = new Task(taskName, new DateTime(date.Year, date.Month, date.Day,
