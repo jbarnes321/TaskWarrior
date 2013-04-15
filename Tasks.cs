@@ -265,6 +265,16 @@ namespace TaskWarrior
                 Console.WriteLine(AlarmSoundChoice);
  
                AlarmTimer.Enabled = true;
+
+               string detailsMessage;
+               detailsMessage = "Name: " + currentTasks.ElementAt(0).Name
+                               + "\nDate: " + currentTasks.ElementAt(0).Date
+                               + "\nLocation: " + currentTasks.ElementAt(0).Location
+                               + "\nDetails: " + currentTasks.ElementAt(0).Details
+                               + "\nAlarm: " + currentTasks.ElementAt(0).Alarm;
+
+
+               
                     
                 Task tempTask = currentTasks.ElementAt(0);
                 currentTasks.Remove(tempTask);
@@ -299,16 +309,10 @@ namespace TaskWarrior
                     SoundPlayer playSound = new SoundPlayer(@"hermain-cain-excuse-me.wav");
                     playSound.Play();
                 }
-                string detailsMessage;
-                detailsMessage = "Name: " + currentTasks.ElementAt(0).Name
-                                + "\nDate: " + currentTasks.ElementAt(0).Date
-                                + "\nLocation: " + currentTasks.ElementAt(0).Location
-                                + "\nDetails: " + currentTasks.ElementAt(0).Details
-                                + "\nAlarm: " + currentTasks.ElementAt(0).Alarm;
-
 
                 MessageBox.Show(detailsMessage);
             }
+            
 
         }
 
