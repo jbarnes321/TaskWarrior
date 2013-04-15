@@ -198,28 +198,37 @@ namespace TaskWarrior
 
         private void deleteTask_Click(object sender, EventArgs e)
         {
-            int selectedIndex = taskList.SelectedIndex;
-            try
-            {   
-                if (viewingCurrentTasks)
+            DialogResult dialogResult = MessageBox.Show("Delete Task?", "Delete", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                int selectedIndex = taskList.SelectedIndex;
+                try
                 {
-                    Task deleteTask = currentTasks[taskList.SelectedIndex];
-                    currentTasks.RemoveAt(selectedIndex);
-                    taskList.Items.RemoveAt(selectedIndex);
-                    allTasks.Remove(deleteTask);                    
-                    currentTaskButton_Click(null, null);
-                }
-                else
-                {
-                    Task deleteTask = previousTasks[taskList.SelectedIndex];
-                    previousTasks.RemoveAt(selectedIndex);
-                    taskList.Items.RemoveAt(selectedIndex);
-                    allTasks.Remove(deleteTask);                    
-                    previousTasksButton_Click(null, null);
-                }
+                    if (viewingCurrentTasks)
+                    {
+                        Task deleteTask = currentTasks[taskList.SelectedIndex];
+                        currentTasks.RemoveAt(selectedIndex);
+                        taskList.Items.RemoveAt(selectedIndex);
+                        allTasks.Remove(deleteTask);
+                        currentTaskButton_Click(null, null);
+                    }
+                    else
+                    {
+                        Task deleteTask = previousTasks[taskList.SelectedIndex];
+                        previousTasks.RemoveAt(selectedIndex);
+                        taskList.Items.RemoveAt(selectedIndex);
+                        allTasks.Remove(deleteTask);
+                        previousTasksButton_Click(null, null);
+                    }
 
+                }
+                catch { }
             }
-            catch { }
+            else if (dialogResult == DialogResult.No)
+            {
+                
+            }
+            
         }
 
         private void currentTaskButton_Click(object sender, EventArgs e)
